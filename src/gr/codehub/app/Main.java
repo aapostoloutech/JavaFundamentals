@@ -1,17 +1,20 @@
 package gr.codehub.app;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
-        int quantity = 12;
-        float price = 1.3f;
+        Product product = new Product("A1", "Ice Cream", 1.3f, 12);
+        Product anotherProduct = new Product("A1", "Ice Cream", 1.3f, 12);
 
-        System.out.println("Total price = " + calculation(quantity, price));
+        Customer customer = new Customer("C1","Alexandros", "Apostolou");
 
+        Basket basket = new Basket(customer);
 
-        Product product = new Product();
-        product.setCode("A1");
+        basket.add(product);
+        basket.add(anotherProduct);
 
-        System.out.println("Product Code : " + product.getCode());
+        basket.display();
     }
 
     public static float calculation(int quantity, float price){
