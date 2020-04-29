@@ -4,17 +4,51 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        Product product = new Product("A1", "Ice Cream", 1.3f, 12);
-        Product anotherProduct = new Product("A1", "Ice Cream", 1.3f, 12);
+        UI ui = new UI();
+        Basket basket = new Basket();
 
-        Customer customer = new Customer("C1","Alexandros", "Apostolou");
+        int choice;
+        do {
+            choice = ui.menu();
 
-        Basket basket = new Basket(customer);
+            switch (choice) {
+                case 1:
+                    basket.add(ui.createProduct());
+                    break;
+                case 2:
 
-        basket.add(product);
-        basket.add(anotherProduct);
+                    break;
+                case 3:
+                    basket.display();
+                    break;
+                case 4:
+                    basket.clear();
+                    break;
+                case 5:
+                    basket.getTotalCost();
+                    break;
+                case 0:
 
-        basket.display();
+                    break;
+                default:
+
+            }
+        } while(choice != 0);
+
+        //Product product = new Product("A1", "Ice Cream", 1.3f, 12);
+        //Product anotherProduct = new Product("A1", "Ice Cream", 1.3f, 12);
+
+        //Customer customer = new Customer("C1","Alexandros", "Apostolou");
+
+        //Basket basket = new Basket();
+
+        //basket.add(product);
+        //basket.add(anotherProduct);
+
+        //basket.display();
+        //System.out.println(basket.getTotalCost());
+
+        //basket.clear();
     }
 
     public static float calculation(int quantity, float price){

@@ -4,33 +4,24 @@ import java.util.ArrayList;
 
 public class Basket {
     private ArrayList<Product> products = new ArrayList<Product>();
-    private Customer customer;
-
-    public Basket(Customer customer) {
-        this.customer = customer;
-    }
+//    private Customer customer;
+//
+//    public Basket(Customer customer) {
+//        this.customer = customer;
+//    }
 
     public void add(Product product){ products.add(product); }
 
-    public void remove(Product product){ products.remove(product); }
-    public void remove(int index){ products.remove(index); }
+    public void remove(Product product){ if(products.contains(product)) products.remove(product); }
+    public void remove(int index){ if (index >= 0 && index < products.size()) products.remove(index); }
 
-    public void clear(){
-        for (Product p : products){
-            products.remove(p);
-        }
-    }
+    public void clear(){ products.clear(); }
 
-    public void display(){
-        System.out.println(products);
-    }
+    public void display(){ System.out.println(products); }
 
     public float getTotalCost(){
-        float totalCost = 0;
-        for (Product p : products){
-            totalCost += p.getPrice() * p.getQuantity();
-        }
-
-        return totalCost;
+        return products.stream()
+                .map(p -> p.getPrice() * p.getQuantity())
+                .reduce(0.0f, (a,b) -> a + b);
     }
 }

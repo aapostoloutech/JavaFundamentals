@@ -27,8 +27,7 @@ public class Product {
         return "Product: { Code='" + code + '\'' +
                 ", Name='" + name + '\'' +
                 ", Price=" + price +
-                ", Quantity=" + quantity +
-                " }";
+                ", Quantity=" + quantity;
     }
 
     @Override
